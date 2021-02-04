@@ -11,6 +11,19 @@ function! s:Space()
             let l:result = substitute(substitute(l:line, '-\s\[x\]', '- [ ]', ''), '\s\[\d\{4}.\+]$', '', '')
             call setline('.', l:result)
             echo "Checkbox off"
+        " (NONE) -> TODO -> DONE -> (NONE)
+        elseif l:line =~ '\-\sTODO\s'
+            let l:result = substitute(l:line, '-\sTODO', '- DONE', '')
+            call setline('.', l:result)
+            echo "TODO -> DONE"
+        elseif l:line =~ '\-\sDONE\s'
+            let l:result = substitute(l:line, '-\sDONE', '-', '')
+            call setline('.', l:result)
+            echo "DONE -> (NONE)"
+        elseif l:line =~ '\-\s'
+            let l:result = substitute(l:line, '-\s', '- TODO ', '')
+            call setline('.', l:result)
+            echo "(NONE) -> TODO"
         end
     else
         echo "Space.vim cannot do anything useful here..."
