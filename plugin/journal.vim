@@ -1,4 +1,15 @@
-function! s:Space()
+function! s:newjournal()
+    let filepath = g:journal_dir . strftime("%Y%m%d.md")
+    execute "edit " . filepath
+    if ! filereadable(filepath) " new file
+        call setline(1, "# " . strftime("%a %d %b %Y"))
+    end
+    call setline(line("$") + 1, "## " . strftime("%H:%M:%S"))
+    call setline(line("$") + 1, "")
+    normal G
+endfunction
+
+function! s:toggle()
     let l:line = getline('.')
 
     if &filetype == "markdown"
@@ -25,10 +36,9 @@ function! s:Space()
             call setline('.', l:result)
             echo "(NONE) -> TODO"
         end
-    else
-        echo "Space.vim cannot do anything useful here..."
     end
 
 endfunction
 
-nnoremap <buffer> <Space> :call <SID>Space()<CR>
+command! -nargs=0 JournalNew call <sid>newjournal()
+command! -nargs=0 JournalToggle call <sid>toggle()
