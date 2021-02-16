@@ -26,11 +26,11 @@ function! s:toggle()
         echo "Checkbox off"
     " (NONE) -> TODO -> DONE -> (NONE)
     elseif l:line =~ '\-\sTODO\s'
-        let l:result = substitute(l:line, '-\sTODO', '- DONE', '')
+        let l:result = substitute(l:line, '-\sTODO', '- DONE', '') . ' [' . strftime("%Y/%m/%d (%a) %H:%M") . ']'
         call setline('.', l:result)
         echo "TODO -> DONE"
     elseif l:line =~ '\-\sDONE\s'
-        let l:result = substitute(l:line, '-\sDONE', '-', '')
+        let l:result = substitute(substitute(l:line, '-\sDONE', '-', ''), '\s\[\d\{4}.\+]$', '', '')
         call setline('.', l:result)
         echo "DONE -> (NONE)"
     elseif l:line =~ '\-\s'
