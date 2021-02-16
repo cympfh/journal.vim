@@ -18,7 +18,12 @@ if ! exists("g:journal_prev")
     let g:journal_prev = "<C-c><C-p>"
 end
 
+if ! exists("g:journal_grep")
+    let g:journal_grep = "<C-c><C-g>"
+end
+
 execute "nnoremap " . g:journal_new . " :JournalNew<cr>"
+execute "nnoremap " . g:journal_grep . " :JournalGrep "
 au FileType markdown execute "nnoremap " . g:journal_toggle . " :JournalToggle<cr>"
 au FileType markdown execute "nnoremap " . g:journal_next . " :JournalNext<cr>"
 au FileType markdown execute "nnoremap " . g:journal_prev . " :JournalPrev<cr>"

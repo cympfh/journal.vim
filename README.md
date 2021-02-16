@@ -25,12 +25,21 @@ let g:journal_new = "<C-c><C-j>"  " default
 
 New markdown file `YYYYmmdd.md` will be created under `g:journal_dir`.
 
-### Move to Prev/Next
+### Goto Prev/Next journal
 
 ```vim
 let g:journal_next = "<C-c><C-n>"  # 1 day after
 let g:journal_prev = "<C-c><C-p>"  # 1 day before
 ```
+
+### Grep
+
+```vim
+let g:journal_grep = "<C-c><C-g>"
+```
+
+`:JournalGrep` command takes 1 argument for searching keyword (grep pattern).
+This uses `ripgrep` if executable.
 
 ## Journal Format
 
