@@ -19,6 +19,6 @@ if ! exists("g:journal_prev")
 end
 
 execute "nnoremap " . g:journal_new . " :JournalNew<cr>"
-execute "nnoremap " . g:journal_toggle . " :JournalToggle<cr>"
-execute "nnoremap " . g:journal_next . " :JournalNext<cr>"
-execute "nnoremap " . g:journal_prev . " :JournalPrev<cr>"
+au FileType markdown execute "nnoremap " . g:journal_toggle . " :JournalToggle<cr>"
+au FileType markdown execute "nnoremap " . g:journal_next . " :JournalNext<cr>"
+au FileType markdown execute "nnoremap " . g:journal_prev . " :JournalPrev<cr>"
