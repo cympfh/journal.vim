@@ -2,7 +2,7 @@
 
 Inspired by `org-journal`.
 
-`space.vim` binds your SpaceKey to Special Actions.
+With `journal.vim`, you can write down diary and ideas very easily.
 
 ## Setup
 
@@ -10,9 +10,14 @@ mkdir and,
 
 ```vim
 let g:journal_dir = "~/Dropbox/org/journal"
+Plug 'cympfh/journal.vim'
 ```
 
-## New journal
+All commands can be remapped.
+
+## Commands
+
+### New journal
 
 ```vim
 let g:journal_new = "<C-c><C-j>"  " default
@@ -20,9 +25,16 @@ let g:journal_new = "<C-c><C-j>"  " default
 
 New markdown file `YYYYmmdd.md` will be created under `g:journal_dir`.
 
-## journal format
+### Move to Prev/Next
 
-Basically it is markdown format.
+```vim
+let g:journal_next = "<C-c><C-n>"  # 1 day after
+let g:journal_prev = "<C-c><C-p>"  # 1 day before
+```
+
+## Journal Format
+
+Basically journal files are just `markdown`.
 Some features are appended.
 
 ### Checkbox

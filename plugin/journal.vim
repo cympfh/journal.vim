@@ -40,5 +40,20 @@ function! s:toggle()
 
 endfunction
 
+let s:journal_day_ago = 0
+
+function! s:move(d)
+    let s:journal_day_ago = s:journal_day_ago + a:d
+    if (s:journal_day_ago < 0)
+        let s:journal_day_ago = 0
+        echo "Current buffer is newest!"
+    else
+        let f = system("date --date '" . s:journal_day_ago . " day ago' '+%Y%m%d.md'")
+        execute "edit " . g:journal_dir . f
+    endif
+endfunction
+
 command! -nargs=0 JournalNew call <sid>newjournal()
 command! -nargs=0 JournalToggle call <sid>toggle()
+command! -nargs=0 JournalPrev call <sid>move(1)
+command! -nargs=0 JournalNext call <sid>move(-1)
