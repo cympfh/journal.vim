@@ -6,6 +6,10 @@ if ! exists("g:journal_new")
     let g:journal_new = "<C-c><C-j>"
 end
 
+if ! exists("g:journal_edit")
+    let g:journal_edit = "<C-c><C-e>"
+end
+
 if ! exists("g:journal_toggle")
     let g:journal_toggle = "<C-c><C-c>"
 end
@@ -23,6 +27,7 @@ if ! exists("g:journal_grep")
 end
 
 execute "nnoremap " . g:journal_new . " :JournalNew<cr>"
+execute "nnoremap " . g:journal_edit . " :e " . g:journal_dir . "/"
 execute "nnoremap " . g:journal_grep . " :JournalGrep "
 au FileType markdown execute "nnoremap " . g:journal_toggle . " :JournalToggle<cr>"
 au FileType markdown execute "inoremap " . g:journal_toggle . " <esc>:JournalToggle<cr>a"
