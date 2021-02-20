@@ -41,6 +41,15 @@ let g:journal_grep = "<C-c><C-g>"
 `:JournalGrep` command takes 1 argument for searching keyword (grep pattern).
 This uses `ripgrep` if executable.
 
+### Tags
+
+```vim
+let g:journal_tags = "<C-c><C-t>"
+```
+
+With 1 argument, `:JournalTags ...` does grep search (`ripgrep` recommended).
+Without argumens, `:JournalTags` list up all tags.
+
 ## Journal Format
 
 Basically journal files are just `markdown`.
@@ -71,6 +80,11 @@ let g:journal_toggle = "<C-c><C-c>"  " default
 ```
 
 The state are switched with `g:journal_toggle`.
+
+### Tags
+
+Identifiers `#...`  (e.g. `#idea` `#reading`) are tags.
+Tags can be searched with `:JournalTags`.
 
 ## Syntax
 

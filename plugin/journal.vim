@@ -65,8 +65,41 @@ function! s:grep(keyword)
     let g:copend = 1
 endfunction
 
+function! s:taglist(...)
+    if executable("rg")
+        if a:0 == 0
+            cexpr system("rg --vimgrep '#[a-zA-Z][^ $]*' Dropbox/org/journal/ --sortr modified")
+            call setqflist([], 'a', {'title' : 'ripgrep #tags'})
+        else
+            if a:1[0] == "#"
+                let tag = a:1
+            else
+                let tag = "#" . a:1
+            end
+            cexpr system("rg --vimgrep '" . tag . "' Dropbox/org/journal/ --sortr modified")
+            call setqflist([], 'a', {'title' : "ripgrep " . tag})
+        endif
+    else
+        if a:0 == 0
+            cexpr system("grep -n '#[a-zA-Z][^ $]*' Dropbox/org/journal/*")
+            call setqflist([], 'a', {'title' : 'grep #tags'})
+        else
+            if a:1[0] == "#"
+                let tag = a:1
+            else
+                let tag = "#" . a:1
+            end
+            cexpr system("grep -n '" . tag . "' Dropbox/org/journal/*")
+            call setqflist([], 'a', {'title' : "grep " . tag})
+        endif
+    endif
+    copen
+    let g:copend = 1
+endfunction
+
 command! -nargs=0 JournalNew call <sid>newjournal()
 command! -nargs=0 JournalToggle call <sid>toggle()
 command! -nargs=0 JournalPrev call <sid>move(1)
 command! -nargs=0 JournalNext call <sid>move(-1)
 command! -nargs=1 JournalGrep call <sid>grep(<f-args>)
+command! -nargs=? JournalTags call <sid>taglist(<f-args>)
