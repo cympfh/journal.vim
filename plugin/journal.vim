@@ -68,7 +68,7 @@ endfunction
 function! s:taglist(...)
     if executable("rg")
         if a:0 == 0
-            cexpr system("rg --vimgrep '#[a-zA-Z][^ $]*' Dropbox/org/journal/ --sortr modified")
+            cexpr system("rg --vimgrep '#[a-zA-Z][^ $]*' " . g:journal_dir . " --sortr modified")
             call setqflist([], 'a', {'title' : 'ripgrep #tags'})
         else
             if a:1[0] == "#"
@@ -76,12 +76,12 @@ function! s:taglist(...)
             else
                 let tag = "#" . a:1
             end
-            cexpr system("rg --vimgrep '" . tag . "' Dropbox/org/journal/ --sortr modified")
+            cexpr system("rg --vimgrep '" . tag . "' " . g:journal_dir . " --sortr modified")
             call setqflist([], 'a', {'title' : "ripgrep " . tag})
         endif
     else
         if a:0 == 0
-            cexpr system("grep -n '#[a-zA-Z][^ $]*' Dropbox/org/journal/*")
+            cexpr system("grep -n '#[a-zA-Z][^ $]*' " . g:journal_dir . "/*")
             call setqflist([], 'a', {'title' : 'grep #tags'})
         else
             if a:1[0] == "#"
@@ -89,7 +89,7 @@ function! s:taglist(...)
             else
                 let tag = "#" . a:1
             end
-            cexpr system("grep -n '" . tag . "' Dropbox/org/journal/*")
+            cexpr system("grep -n '" . tag . "' " . g:journal_dir . "/*")
             call setqflist([], 'a', {'title' : "grep " . tag})
         endif
     endif
