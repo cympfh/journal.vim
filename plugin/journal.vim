@@ -97,14 +97,9 @@ function! s:taglist(...)
     let g:copend = 1
 endfunction
 
-function! s:list()
-    execute "edit " . g:journal_dir
-endfunction
-
 command! -nargs=0 JournalNew call <sid>newjournal()
 command! -nargs=0 JournalToggle call <sid>toggle()
 command! -nargs=0 JournalPrev call <sid>move(1)
 command! -nargs=0 JournalNext call <sid>move(-1)
 command! -nargs=1 JournalGrep call <sid>grep(<f-args>)
 command! -nargs=? JournalTags call <sid>taglist(<f-args>)
-command! -nargs=? JournalList call <sid>list(<f-args>)
