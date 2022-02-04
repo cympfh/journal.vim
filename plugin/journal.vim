@@ -1,5 +1,7 @@
 function! s:newjournal()
-    let filepath = g:journal_dir . strftime("%Y%m%d.md")
+    let dirpath = g:journal_dir . strftime("%Y")
+    silent execute "!mkdir -p " . dirpath
+    let filepath = g:journal_dir . strftime("%Y/%m%d.md")
     execute "edit " . filepath
     if ! filereadable(expand(filepath)) " new file
         call setline(1, "# " . strftime("%a %d %b %Y"))
@@ -48,7 +50,7 @@ function! s:move(d)
         let s:journal_day_ago = 0
         echo "Current buffer is newest!"
     else
-        let f = system("date --date '" . s:journal_day_ago . " day ago' '+%Y%m%d.md'")
+        let f = system("date --date '" . s:journal_day_ago . " day ago' '+%Y/%m%d.md'")
         execute "edit " . g:journal_dir . f
     endif
 endfunction

@@ -23,7 +23,7 @@ All commands can be remapped.
 let g:journal_new = "<C-j><C-j>"  " default
 ```
 
-New markdown file `YYYYmmdd.md` will be created under `g:journal_dir`.
+New markdown file `YYYY/mmdd.md` will be created under `g:journal_dir`.
 
 ### Goto Prev/Next journal
 
