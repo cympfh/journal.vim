@@ -60,7 +60,7 @@ function! s:grep(keyword)
         cexpr system('rg --vimgrep ' . a:keyword . ' ' . g:journal_dir)
         call setqflist([], 'a', {'title' : 'ripgrep ' . a:keyword})
     else
-        cexpr system('grep -n ' . a:keyword . ' ' . g:journal_dir . '/*')
+        cexpr system('grep -n ' . a:keyword . ' ' . g:journal_dir . '/*/*')
         call setqflist([], 'a', {'title' : 'grep ' . a:keyword})
     endif
     copen
