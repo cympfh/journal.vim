@@ -6,7 +6,7 @@ With `journal.vim`, you can write down diary and ideas very easily.
 
 ## Setup
 
-mkdir and,
+`mkdir` and,
 
 ```vim
 let g:journal_dir = "~/Dropbox/org/journal"
@@ -48,7 +48,7 @@ let g:journal_tags = "<C-j><C-t>"
 ```
 
 With 1 argument, `:JournalTags ...` does grep search (`ripgrep` recommended).
-Without argumens, `:JournalTags` list up all tags.
+Without arguments, `:JournalTags` list up all tags.
 
 ## Journal Format
 
