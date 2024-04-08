@@ -69,8 +69,10 @@ let g:journal_toggle = "<C-j><C-x>"  " default
 ```
 
 ```
-- [x] hogehoge [2021/01/28 (Thu) 14:03]
-- [ ] fugafuga
+- [ ] unchecked
+- [x] checked [2021/01/28 (Thu) 14:03]
+- [-] aborted [2021/01/28 (Thu) 14:04]
+- [ ] unchecked (loop)
 ```
 
 ### TODO State
